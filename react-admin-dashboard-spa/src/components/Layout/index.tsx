@@ -3,6 +3,8 @@ import React from 'react'
 import Sidebar from '../Sidebar'
 import Routes from '../../routes'
 
+import './index.css'
+
 import { BrowserRouter, Route } from 'react-router-dom'
 
 const Layout: React.FC = () => {
