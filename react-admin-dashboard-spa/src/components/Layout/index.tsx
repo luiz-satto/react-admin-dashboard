@@ -1,11 +1,11 @@
 import React from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 import Sidebar from '../Sidebar'
+import Topnav from '../Topnav'
 import Routes from '../../routes'
 
 import './index.css'
-
-import { BrowserRouter, Route } from 'react-router-dom'
 
 const Layout: React.FC = () => {
   return (
@@ -14,6 +14,7 @@ const Layout: React.FC = () => {
         <div className='layout'>
           <Sidebar {...props} />
           <div className="layout__content">
+            <Topnav />
             <div className="layout__content-main">
               <Routes />
             </div>
