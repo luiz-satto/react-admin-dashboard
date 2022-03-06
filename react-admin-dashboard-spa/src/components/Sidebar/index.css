@@ -10,7 +10,7 @@
 
 .sidebar__logo {
     height: 150px;
-    /* display: flex; */
+    display: flex;
     align-items: center;
     justify-content: center;
 }

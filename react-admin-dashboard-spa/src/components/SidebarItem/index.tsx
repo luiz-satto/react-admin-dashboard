@@ -3,25 +3,25 @@ import React from 'react'
 import './index.css'
 
 interface IProps {
-    active: any;
-    icon: string | undefined;
-    title: string | undefined;
+    active: boolean,
+    icon: string,
+    title: string
 }
 
-const SidebarItem: React.FC<IProps> =
-    (props: IProps) => {
-        const active = props.active ? 'active' : '';
+const SidebarItem: React.FC<IProps> = props => {
 
-        return (
-            <div className='sidebar__item'>
-                <div className={`sidebar__item-inner ${active}`}>
-                    <i className={props.icon}></i>
-                    <span>
-                        {props.title}
-                    </span>
-                </div>
+    const active = props.active ? 'active' : ''
+
+    return (
+        <div className="sidebar__item">
+            <div className={`sidebar__item-inner ${active}`}>
+                <i className={props.icon}></i>
+                <span>
+                    {props.title}
+                </span>
             </div>
-        )
-    }
+        </div>
+    )
+}
 
 export default SidebarItem
