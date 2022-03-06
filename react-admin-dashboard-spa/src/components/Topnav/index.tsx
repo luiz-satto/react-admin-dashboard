@@ -6,7 +6,7 @@ import NotificationItem from '../NotificationItem'
 import UserMenu from '../UserMenu'
 // import ThemeMenu from '../thememenu/ThemeMenu'
 
-import userImage from '../../assets/images/favicon.png'
+import userImage from '../../assets/images/user.png'
 import notifications from '../../assets/JsonData/notification.json'
 import user_menu from '../../assets/JsonData/user_menus.json'
 
