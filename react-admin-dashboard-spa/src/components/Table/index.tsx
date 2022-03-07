@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
-import ITableData from './ITableData'
-
 import './index.css'
 
 interface IProps {
     limit?: number,
     headData: string[],
     renderHead: (item: string, index: number) => JSX.Element,
-    bodyData: ITableData[],
-    renderBody: (item: ITableData, index: number) => JSX.Element,
+    bodyData: any[],
+    renderBody: (item: any, index: number) => JSX.Element,
 }
 
 const Table: React.FC<IProps> = props => {

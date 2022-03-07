@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import Dropdown from '../Dropdown'
 import NotificationItem from '../NotificationItem'
 import UserMenu from '../UserMenu'
-// import ThemeMenu from '../thememenu/ThemeMenu'
 
 import userImage from '../../assets/images/user.png'
 import notifications from '../../assets/JsonData/notification.json'
@@ -12,6 +11,7 @@ import user_menu from '../../assets/JsonData/user_menus.json'
 
 import './index.css'
 import IDropDownContent from '../Dropdown/IDropDownContent'
+import ThemeMenu from '../ThemeMenu'
 
 const user = {
     displayName: 'Luiz Satto',
@@ -58,7 +58,7 @@ const Topnav: React.FC = () => {
                     />
                 </div>
                 <div className="topnav__right-item">
-                    {/* <ThemeMenu /> */}
+                    <ThemeMenu />
                 </div>
             </div>
         </div>

@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Chart from 'react-apexcharts'
 import { ApexOptions } from 'apexcharts'
+import Chart from 'react-apexcharts'
+
+import { useSelector } from 'react-redux'
+
+import StatusCard from '../../components/StatusCard'
+import Table from '../../components/Table'
+import Badge from '../../components/Badge'
 
 import statusCard from '../../assets/JsonData/status-card-data.json'
-import StatusCard from '../../components/StatusCard'
-
-import Table from '../../components/Table'
 
 const chartSeries = [
   {
@@ -112,7 +115,7 @@ const latestOrders = {
       username: "Frank Iva",
       date: "1 Jun 2021",
       price: "$400",
-      status: "paid"
+      status: "Paid"
     },
     {
       id: "#OD1713",
@@ -124,7 +127,17 @@ const latestOrders = {
   ]
 }
 
+enum OrderStatus {
+  Shipping = "primary",
+  Pending = "warning",
+  Paid = "success",
+  Refund = "danger"
+}
+
 const Dashboard: React.FC = () => {
+  const themeReducer = useSelector((state: any) => state.ThemeReducer.mode)
+  let orderStatus = (OrderStatus as any)
+
   return (
     <div>
       <h2 className='page-header'>Dashboard</h2>
@@ -147,7 +160,15 @@ const Dashboard: React.FC = () => {
         <div className='col-6'>
           <div className="card full-height">
             <Chart
-              options={chartOptions}
+              options={themeReducer === 'theme-mode-dark'
+                ? {
+                  ...chartOptions,
+                  theme: { mode: 'dark' }
+                } : {
+                  ...chartOptions,
+                  theme: { mode: 'light' }
+                }
+              }
               series={chartSeries}
               type='line'
               height='100%'
@@ -175,14 +196,14 @@ const Dashboard: React.FC = () => {
               />
             </div>
             <div className='card__footer'>
-              <Link to='/'>view all</Link>
+              <Link to='/customers'>view all</Link>
             </div>
           </div>
         </div>
         <div className="col-8">
           <div className="card">
             <div className="card__header">
-              <h3>latest orders</h3>
+              <h3>Latest Orders</h3>
             </div>
             <div className="card__body">
               <Table
@@ -195,15 +216,18 @@ const Dashboard: React.FC = () => {
                     <td>{item.username}</td>
                     <td>{item.price}</td>
                     <td>{item.date}</td>
-                    {/* <td>
-                      <Badge type={orderStatus[item.status]} content={item.status} />
-                    </td> */}
+                    <td>
+                      <Badge type={item.status
+                        ? orderStatus[item.status]
+                        : 'primary'
+                      } content={item.status} />
+                    </td>
                   </tr>
                 }
               />
             </div>
             <div className="card__footer">
-              <Link to='/'>view all</Link>
+              <Link to='/orders'>view all</Link>
             </div>
           </div>
         </div>
